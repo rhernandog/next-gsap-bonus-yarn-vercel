@@ -1,7 +1,21 @@
+"use client";
+
 import Image from "next/image";
+import gsap from "gsap";
+import { MorphSVGPlugin } from "gsap/dist/MorphSVGPlugin";
+import { useGSAP } from "@gsap/react";
+
 import styles from "./page.module.css";
 
-export default function Home() {
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(MorphSVGPlugin);
+}
+
+export default function Home () {
+  useGSAP(() => {
+    console.log("Morph SVG Plugin version:", MorphSVGPlugin.version);
+  });
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
